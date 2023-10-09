@@ -10,7 +10,7 @@ vms = {
 Vagrant.configure('2') do |config|
   config.vm.box_check_update = false					## opcional: adiar a checagem de updates
   vms.each do |name, conf|						## para cada item do dicionário de vms, faça:
-    config.vm.provision 'shell', path: 'provision.sh'
+    config.vm.provision 'shell', path: 'provision_linuxtips.sh'
     config.vm.define "#{name}" do |my|
       my.vm.box = conf['box']						## seleciona a box com a distribuição linux a ser utilizada
       my.vm.hostname = "#{name}.example.com"				## define o hostname da máquina
