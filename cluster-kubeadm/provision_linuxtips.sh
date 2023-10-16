@@ -40,6 +40,10 @@ containerd config default > /etc/containerd/config.toml
 
 systemctl restart containerd
 
+## Desabilitar SWAP
+sudo sed -i '/swap/d' /etc/fstab
+sudo swapoff -a
+
 ## Instalação do kubeadm, kubelet and kubectl
 
 sudo apt-get update && \
