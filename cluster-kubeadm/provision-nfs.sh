@@ -9,7 +9,8 @@ cat >>/etc/hosts<<EOF
 EOF
 
 echo "[TASK 2] Download and install NFS server"
-apt install -y nfs-kernel-server rpcbind
+apt-get update
+apt-get install -y nfs-kernel-server rpcbind
 
 echo "[TASK 3] Create a kubedata directory"
 mkdir -p /srv/nfs/kubedata

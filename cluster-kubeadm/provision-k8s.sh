@@ -17,7 +17,7 @@ cat >>/etc/hosts<<EOF
 192.168.56.20 worker01.example.com worker01
 192.168.56.30 worker02.example.com worker02
 192.168.56.40 worker03.example.com worker03
-192.168.56.200 nfs-server.example.com nfs-server
+192.168.56.200 nfs.example.com nfs
 EOF
 
 ## Configuração dos parametros do sysctl
@@ -35,7 +35,8 @@ sudo apt-get install \
     ca-certificates \
     curl \
     gnupg \
-    apt-transport-https -y
+    apt-transport-https \
+    nfs-common -y
 
 ## Adicionando a chave GPG
 echo "[TASK 4] Install GPG key - Docker"
