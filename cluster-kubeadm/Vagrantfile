@@ -3,7 +3,7 @@
 ## 1. Definindo as características das máquinas virtuais 
 k8s = {
   'controlplane' => {'memory' => '2048', 'cpus' => 2, 'ip' => '10', 'box' => 'generic/debian11'},
-  'worker01' => {'memory' => '2048', 'cpus' => 1, 'ip' => '20', 'box' => 'generic/debian11'},
+  'worker01' => {'memory' => '1024', 'cpus' => 1, 'ip' => '20', 'box' => 'generic/debian11'},
   'worker02' => {'memory' => '1024', 'cpus' => 1, 'ip' => '30', 'box' => 'generic/debian11'},
   'worker03' => {'memory' => '1024', 'cpus' => 1, 'ip' => '40', 'box' => 'generic/debian11'},
 }
