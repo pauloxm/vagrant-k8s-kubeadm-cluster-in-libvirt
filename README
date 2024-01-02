@@ -1,0 +1,21 @@
+Projeto IaC Cluster Kubernetes usando:
+
+- Debian
+- Vagrant
+- Virt-Manager
+- Kubernetes
+- Helm
+
+Pre-Requisitos:
+
+- No arquivo /etc/nfs.conf da maquina que executa o Virt-Manager o parametro abaixo deve estar habilitado:
+
+[nfsd]
+# Para funcionar compartilhamento com o Vagrant
+udp=y
+
+
+- São usados 2 diretórios compartilhados com as VMs:
+
+>>  /home/pauloxmachado/Git/Kubernetes/helm: Usado para compartilhar os arquivos do Helm criados localmente via VSCode;
+>> /tmp/k8s: Usado para exportar o token de ingresso no cluster entre o control plane e os workers

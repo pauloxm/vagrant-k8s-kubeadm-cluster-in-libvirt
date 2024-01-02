@@ -121,7 +121,6 @@ echo "##########################################################################
 sudo kubeadm init
 mkdir -p /home/vagrant/.kube
 sudo cp -i /etc/kubernetes/admin.conf /home/vagrant/.kube/config
-#sudo chown $(id -u):$(id -g) /home/vagrant/.kube/config
 sudo chown vagrant:vagrant /home/vagrant/.kube/config
 
 ## Configura CNI Weave
