@@ -1,12 +1,17 @@
 # Update hosts file
 echo "[TASK 1] Update /etc/hosts file"
 cat >>/etc/hosts<<EOF
-192.168.56.10 controlplane.example.com controlplane
-192.168.56.20 worker01.example.com worker01
-192.168.56.30 worker02.example.com worker02
-192.168.56.40 worker03.example.com worker03
-192.168.56.200 nfs.example.com nfs
+192.168.56.10 controlplane.pauloxmachado.cloud controlplane
+192.168.56.20 worker01.pauloxmachado.cloud worker01
+192.168.56.30 worker02.pauloxmachado.cloud worker02
+192.168.56.40 worker03.pauloxmachado.cloud worker03
+192.168.56.50 jenkins.pauloxmachado.cloud jenkins
+192.168.56.60 sonarqube.pauloxmachado.cloud sonarqube
+192.168.56.70 gitlab.pauloxmachado.cloud gitlab
+192.168.56.80 nexus.pauloxmachado.cloud nexus
+192.168.56.200 nfs-server.pauloxmachado.cloud nfs-server
 EOF
+
 
 echo "[TASK 2] Download and install NFS server"
 apt install -y nfs-kernel-server rpcbind

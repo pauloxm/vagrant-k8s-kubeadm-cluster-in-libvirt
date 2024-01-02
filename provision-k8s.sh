@@ -1,5 +1,9 @@
 #!/bin/bash
 
+while ! [[ -f "/tmp/k8s/kube-token.sh" ]]; do
+  sleep 5
+done
+
 ## Instalação dos módulos do Kernel
 echo "[TASK 1] Enable containerd modules: overlay and br_netfilter"
 cat <<EOF | sudo tee /etc/modules-load.d/containerd.conf
@@ -13,11 +17,15 @@ sudo modprobe br_netfilter
 # Update hosts file
 echo "[TASK 2] Update /etc/hosts file"
 cat >>/etc/hosts<<EOF
-192.168.56.10 controlplane.example.com controlplane
-192.168.56.20 worker01.example.com worker01
-192.168.56.30 worker02.example.com worker02
-192.168.56.40 worker03.example.com worker03
-192.168.56.200 nfs-server.example.com nfs-server
+192.168.56.10 controlplane.pauloxmachado.cloud controlplane
+192.168.56.20 worker01.pauloxmachado.cloud worker01
+192.168.56.30 worker02.pauloxmachado.cloud worker02
+192.168.56.40 worker03.pauloxmachado.cloud worker03
+192.168.56.50 jenkins.pauloxmachado.cloud jenkins
+192.168.56.60 sonarqube.pauloxmachado.cloud sonarqube
+192.168.56.70 gitlab.pauloxmachado.cloud gitlab
+192.168.56.80 nexus.pauloxmachado.cloud nexus
+192.168.56.200 nfs-server.pauloxmachado.cloud nfs-server
 EOF
 
 ## Configuração dos parametros do sysctl
@@ -35,6 +43,7 @@ sudo apt-get install \
     ca-certificates \
     curl \
     gnupg \
+    nfs-common \
     apt-transport-https -y
 
 ## Adicionando a chave GPG
@@ -84,3 +93,9 @@ sudo swapoff -a
 echo "[TASK 13] Update apt and install kubeadm, kubectl and kubelet"
 sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
+
+## Importa Token
+echo "[TASK 14] Import Kubernetes token"
+sudo chmod +x /tmp/k8s/kube-token.sh
+sudo sh /tmp/k8s/kube-token.sh
+sudo rm -rf /tmp/k8s/kube-token.sh
